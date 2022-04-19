@@ -1,2 +1,46 @@
-<h1>StudentsApp</h1>
-<hr>
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav mode="push">
+
+        <mat-toolbar>
+            <span>Menu</span>
+            <span class="leo"></span>
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </mat-toolbar>
+
+        <mat-nav-list>
+            <a routerLink="./list" mat-list-item (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>label</mat-icon>
+                <span>List of students</span>
+            </a>
+            <a routerLink="./add" mat-list-item (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>add</mat-icon>
+                <span>Add a student</span>
+            </a>
+            <a routerLink="./search" mat-list-item (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>search</mat-icon>
+                <span>Search a student</span>
+            </a>
+
+        </mat-nav-list>
+
+    </mat-sidenav>
+    <mat-toolbar>
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <span class="leo"></span>
+        <button mat-button>
+            Logout
+        </button>
+
+    </mat-toolbar>
+
+    <div class="container">
+
+        <router-outlet></router-outlet>
+    </div>
+
+</mat-sidenav-container>
