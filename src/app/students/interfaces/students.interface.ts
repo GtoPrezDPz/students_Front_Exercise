@@ -1,6 +1,7 @@
 export interface Student {
     id?: string;
     name: string;
+    surname: string;
     publisher: Publisher;
     city: string;
     email: string;

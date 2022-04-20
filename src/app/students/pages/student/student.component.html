@@ -1,1 +1,8 @@
-<p>student works!</p>
+<mat-grid-list cols="1" *ngIf="!student; else divStudent">
+    <mat-grid-tile>
+        <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+
+</mat-grid-list>
+
+<ng-template #divStudent>{{ student | json }}</ng-template>

@@ -5,16 +5,19 @@ import { StudentsService } from '../../services/students.service';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styles: [
-  ]
+  styles: [`
+  mat-card {
+    margin-top:20px
+  }
+  `]
 })
 export class ListComponent implements OnInit {
 
   students: Student[] = [];
-  constructor( private heroesService: StudentsService ) { }
+  constructor( private studentsService: StudentsService ) { }
 
   ngOnInit(): void {
-    this.heroesService.getStudent().subscribe( students => this.students = students );
+    this.studentsService.getStudent().subscribe( students => this.students = students );
   }
 
 }

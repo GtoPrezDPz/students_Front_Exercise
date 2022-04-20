@@ -8,9 +8,13 @@ import { Student } from '../interfaces/students.interface';
 })
 export class StudentsService {
 
-  constructor( private http: HttpClient ) { }
+  constructor(private http: HttpClient) { }
 
   getStudent(): Observable<Student[]> {
     return this.http.get<Student[]>('http://localhost:3000/students')
   }
-}
+
+  getStudentById(id: string): Observable<Student> {
+    return this.http.get<Student>(`http://localhost:3000/students/${ id }`);
+  }
+} 

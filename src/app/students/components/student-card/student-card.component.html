@@ -1,0 +1,39 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title> {{ student.name }}</mat-card-title>
+        <mat-card-subtitle> {{ student.city}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <img mat-card-image [src]="student | imagen">
+
+    <mat-card-content>
+        <h3>{{ student.publisher }}</h3>
+        <p>
+            <strong>Email</strong> {{ student.email }}
+            <br>
+            <strong>Phone</strong> {{ student.phone }}
+        </p>
+        <mat-card-actions>
+
+
+        </mat-card-actions>
+
+        <button mat-button color="warn" 
+        [routerLink]="['/students',student.id ]"
+        >
+            Read more
+        </button>
+        <button mat-button color="warn"
+        [routerLink]="['/students/edit',student.id ]"
+        >
+            Edit
+        </button>
+
+    </mat-card-content>
+
+
+
+
+
+
+</mat-card>

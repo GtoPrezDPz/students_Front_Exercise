@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs';
+import { Student } from '../../interfaces/students.interface';
+import { StudentsService } from '../../services/students.service';
 
 @Component({
   selector: 'app-student',
@@ -8,9 +12,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentComponent implements OnInit {
 
-  constructor() { }
+  student!: Student;
+
+  constructor(private activatedRoute: ActivatedRoute, private studentsService: StudentsService) { }
 
   ngOnInit(): void {
+    this.activatedRoute.params
+      .pipe(
+        switchMap(({ id }) => this.studentsService.getStudentById(id))
+      )
+      .subscribe( student => this.student = student );
   }
-
 }

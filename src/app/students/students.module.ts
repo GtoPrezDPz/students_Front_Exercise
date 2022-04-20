@@ -10,6 +10,8 @@ import { StudentComponent } from './pages/student/student.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ListComponent } from './pages/list/list.component';
 import { SearchComponent } from './pages/search/search.component';
+import { StudentCardComponent } from './components/student-card/student-card.component';
+import { ImagenPipe } from './pipes/imagen.pipe';
 
 
 
@@ -22,7 +24,9 @@ import { SearchComponent } from './pages/search/search.component';
     StudentComponent,
     HomeComponent,
     ListComponent,
-    SearchComponent
+    SearchComponent,
+    StudentCardComponent,
+    ImagenPipe
   ],
   imports: [
     CommonModule,
