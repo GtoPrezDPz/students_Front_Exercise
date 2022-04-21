@@ -5,4 +5,35 @@
 
 </mat-grid-list>
 
-<ng-template #divStudent>{{ student | json }}</ng-template>
+<ng-template #divStudent>
+    <div fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutGap="30px">
+
+    <div fxFlex="50">
+<h1>{{ student.name }} <small> {{ student.surname }}</small></h1>
+<mat-divider></mat-divider>  
+<br>
+<img [src]="student | imagen">  
+</div>
+    <div fxFlex="50">
+<h1>{{ student.publisher }}</h1>
+<mat-divider></mat-divider>
+
+<mat-list>
+    <mat-list-item> {{ student.name }}</mat-list-item>
+    <mat-list-item> {{ student.surname }}</mat-list-item>
+    <mat-list-item> {{ student.city }}</mat-list-item>
+    <mat-list-item> {{ student.email }}</mat-list-item>
+    <mat-list-item> {{ student.phone }}</mat-list-item>
+</mat-list>
+<br>
+<button mat-button 
+        color="warn"
+        (click)="return()">
+    Return
+</button>
+
+    </div>
+</div>
+

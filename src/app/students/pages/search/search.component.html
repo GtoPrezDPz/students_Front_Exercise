@@ -1,1 +1,36 @@
-<p>search works!</p>
+<div fxLayout="column">
+    <div>
+        <h1>Search engine of student </h1>
+    </div>
+    <div>
+        <h3>Search engine</h3>
+        
+
+        <mat-form-field class="example-full-width">
+            <input type="text"
+            placeholder="Pick one"
+            aria-label="Number"
+            matInput
+            [(ngModel)]="termino"
+            [matAutocomplete]="auto"
+            (input)="searching()">
+
+
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+            (optionSelected)="optionSelected( $event )">
+            
+            <mat-option *ngFor="let student of students" [value]="student">
+                {{ student.name }}
+            </mat-option>
+            <mat-option value="" *ngIf="students.length === 0 && termino.trim().length > 0 ">
+                Not find! {{ termino }}
+            </mat-option>
+        </mat-autocomplete>
+        </mat-form-field>
+  </div>
+
+  <div>
+      <pre>{{ selectedStudent | json }}</pre>
+  </div>
+  </div>
+
