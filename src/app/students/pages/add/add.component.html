@@ -1,54 +1,50 @@
-<h1>New student<small>sdsd</small></h1>
+<h1>New student<small>{{student.name}}</small></h1>
 
-<div fxLayout="row" fxLayoutGap="40px">
+<div fxLayout="row" fxLayoutGap="40px" fxLayout.xs="column">
 
     <div fxFlex="50" fxLayout="column">
 
-        <div fxLayout="row" fxLayoutGap="20px">
-            <mat-form-field fxFlex="100">
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
+            <mat-form-field fxFlex="100" fxLayout.xs="column">
                 <mat-label>Name</mat-label>
-                <input matInput type="text" required>
+                <input matInput type="text" [(ngModel)]="student.name" required>
             </mat-form-field>
 
             <mat-form-field fxFlex="100">
                 <mat-label>Surname</mat-label>
-                <input matInput type="text" required>
+                <input matInput type="text" [(ngModel)]="student.surname" required>
             </mat-form-field>
 
         </div>
 
         <mat-form-field fxFlex="100">
             <mat-label>City</mat-label>
-            <input matInput type="text" required>
+            <input matInput type="text" [(ngModel)]="student.city" required>
         </mat-form-field>
 
         <mat-form-field fxFlex="100">
             <mat-label>Email</mat-label>
-            <input matInput type="text" required>
+            <input matInput type="text" [(ngModel)]="student.email" required>
         </mat-form-field>
 
         <mat-form-field fxFlex="100">
             <mat-label>Phone</mat-label>
-            <input matInput type="text" required>
+            <input matInput type="text" [(ngModel)]="student.phone" required>
         </mat-form-field>
 
         <mat-form-field fxFlex="100">
             <mat-label>urlPhoto</mat-label>
-            <input matInput type="url" required>
+            <input matInput type="url" [(ngModel)]="student.alt_img" required>
         </mat-form-field>
 
         <hr>
 
-        <button mat-raised-button color="warn">
+        <button mat-raised-button color="warn" (click)="save()">
             <mat-icon>edit</mat-icon>
             Save
         </button>
-
-
-
-
     </div>
     <div fxFlex="50">
-        2
+        <img [src]="student | imagen">
     </div>
 </div>

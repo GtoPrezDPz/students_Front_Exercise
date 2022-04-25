@@ -1,3 +1,4 @@
+
 import { Pipe, PipeTransform } from '@angular/core';
 import { Student } from '../interfaces/students.interface';
 
@@ -7,7 +8,15 @@ import { Student } from '../interfaces/students.interface';
 export class ImagenPipe implements PipeTransform {
 
   transform(student: Student): string {
-    return `assets/students/${ student.id }.jpg`;
+
+    if (!student.id && !student.alt_img) {
+      return 'assets/no-image.png';
+    } else if (student.alt_img) {
+      return student.alt_img;
+    } else {
+      return `assets/students/${student.id}.jpg`;
+    }
+
   }
 
 }

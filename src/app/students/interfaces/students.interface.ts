@@ -11,6 +11,6 @@ export interface Student {
 
 export enum Publisher {
     ID = "id",
-    Name = "name",
+    Name = "student",
 }
 

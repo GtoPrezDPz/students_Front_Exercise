@@ -11,6 +11,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatAutocompleteModule } from '@angular/material/autocomplete'; 
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
+import {MatSnackBarModule} from '@angular/material/snack-bar'; 
+import {MatDialogModule} from '@angular/material/dialog'; 
+import {MatSelectModule} from '@angular/material/select'; 
+
 
 @NgModule({
   exports: [
@@ -25,6 +29,9 @@ import { MatInputModule } from '@angular/material/input'
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatSelectModule
     
 
   ]
