@@ -30,11 +30,11 @@ export class AddComponent implements OnInit {
 
   constructor(private studentsService: StudentsService,
     private activatedRoute: ActivatedRoute,
-    private  router: Router) { }
+    private router: Router) { }
 
   ngOnInit(): void {
 
-    if( this.router.url.includes(' edit ')) {
+    if (!this.router.url.includes(' edit ')) {
       return;
     }
 
@@ -57,8 +57,8 @@ export class AddComponent implements OnInit {
         .subscribe(student => console.log('UPdating', student))
     } else {
       this.studentsService.studentAdd(this.student)
-        .subscribe( heroe => {
-          this.router.navigate(['/students/edit', this.student.id]);
+        .subscribe(student => {
+          this.router.navigate(['/students/edit', student.id]);
         })
 
     }
