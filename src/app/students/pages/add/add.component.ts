@@ -34,9 +34,10 @@ export class AddComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if (!this.router.url.includes(' edit ')) {
+    if (!this.router.url.includes(' UPdating ')) {
       return;
     }
+
 
     this.activatedRoute.params
       .pipe(
@@ -62,9 +63,6 @@ export class AddComponent implements OnInit {
         })
 
     }
-
-
-
   }
 }
 
