@@ -34,17 +34,13 @@ export class AddComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if (!this.router.url.includes(' UPdating ')) {
-      return;
-    }
 
 
     this.activatedRoute.params
       .pipe(
-        switchMap(({ id }) => this.studentsService.getStudentById(id))
+        switchMap( ({id}) => this.studentsService.getStudentById( id ))
       )
-
-      .subscribe(student => this.student = student);
+      .subscribe( student => this.student = student);
 
   }
 
