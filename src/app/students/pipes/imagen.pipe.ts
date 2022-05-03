@@ -5,6 +5,7 @@ import { Student } from '../interfaces/students.interface';
 @Pipe({
   name: 'imagen'
 })
+
 export class ImagenPipe implements PipeTransform {
 
   transform(student: Student): string {

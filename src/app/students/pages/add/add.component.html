@@ -1,4 +1,11 @@
-<h1> New student <small> {{student.name}} </small></h1>
+<h1>
+    {{
+    ( student.id )? 'Edit' : 'New'
+    }}
+    Student
+
+    <small> {{student.name}} </small>
+</h1>
 
 <div fxLayout="row" fxLayoutGap="40px" fxLayout.xs="column">
 
@@ -37,14 +44,24 @@
             <input matInput type="url" [(ngModel)]="student.alt_img" required>
         </mat-form-field>
 
-        <hr>
+        <br>
 
-        <button mat-raised-button color="warn" (click)="save()">
-            <mat-icon>edit</mat-icon>
-            Save
-        </button>
+        <div fxLayout>
+            <button mat-raised-button color="primary" (click)="save()">
+                <mat-icon>edit</mat-icon>
+                {{
+                    ( student.id )? 'Update' : 'Create'
+                    }}
+            </button>
+
+            <span class="leo"></span>
+
+            <button *ngIf="student.id" mat-raised-button (click)="remove()" color="warn">
+                <mat-icon>remove</mat-icon>
+                Remove
+            </button>
+        </div>
     </div>
     <div fxFlex="50">
         <img [src]="student | imagen">
     </div>
-</div>

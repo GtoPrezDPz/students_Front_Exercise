@@ -3,6 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Publisher, Student } from '../../interfaces/students.interface';
 import { StudentsService } from '../../services/students.service';
 import { switchMap } from 'rxjs/operators'
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmComponent } from '../../components/confirm/confirm.component';
 
 
 @Component({
@@ -30,17 +33,20 @@ export class AddComponent implements OnInit {
 
   constructor(private studentsService: StudentsService,
     private activatedRoute: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
 
-
+    if (this.router.url.includes('edit')) {
+    }
 
     this.activatedRoute.params
       .pipe(
-        switchMap( ({id}) => this.studentsService.getStudentById( id ))
+        switchMap(({ id }) => this.studentsService.getStudentById(id)),
       )
-      .subscribe( student => this.student = student);
+      .subscribe(student => this.student = student);
 
   }
 
@@ -51,14 +57,43 @@ export class AddComponent implements OnInit {
 
     if (this.student.id) {
       this.studentsService.studentUpdate(this.student)
-        .subscribe(student => console.log('UPdating', student))
+        .subscribe(student => this.snackbarShow('Updated register'))
     } else {
       this.studentsService.studentAdd(this.student)
         .subscribe(student => {
           this.router.navigate(['/students/edit', student.id]);
+          this.snackbarShow('Created register')
         })
 
     }
+  }
+
+  remove() {
+
+    const dialog = this.dialog.open(ConfirmComponent, {
+      width: '250px',
+      data: this.student
+    });
+
+    dialog.afterClosed().subscribe(
+      (answer) => {
+        if (answer) {
+          this.studentsService.studentDelete(this.student.id!)
+            .subscribe(ans => {
+              this.router.navigate(['/students']);
+            });
+        }
+      }
+    )
+
+  }
+
+  snackbarShow(msg: string) {
+
+    this.snackBar.open(msg, 'okey!', {
+      duration: 2500
+    });
+
   }
 }
 
